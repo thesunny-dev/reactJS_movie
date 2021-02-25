@@ -1,0 +1,75 @@
+// node.js설치 (확인 : >node-v)
+// npm설치확인 >npm -v
+// >npm install npx -g (확인 : >-npx -v)
+// >npx create-react-app reactjs_movie_app (facebook이 제공하는 react installer)
+// >npm i prop-types (=prop의 유효성검사기)
+
+
+---<Virtual DOM>---
+React creates all the elements that I write on it, 
+    it creates them with Javascript, and it pushes(or deletes!) them into HTML
+
+    (App.js 안의 components를 index.js의 document.getElementById를 이용해 html에 넣어줌!)
+    -Why React is fast? : 처음에 empty html을 불러온 후에 index.js를 이용해 html을 create,push해주기 때문
+    (publi>index.html안에 있는 id와 source>index.js의 id가 같은지 확인)
+
+✅ react works with 'COMPONENT'
+    -Component는 HTML을 반환하는 함수 (App.js에 있는것 <App />, Potato.js에)
+    -ex. ReactDOM.render(<App />,document.ngetElementById('root'));
+    -Component 이름은 대문자로 시작해야한다.
+
+✅React JS는 vanilla JS와 아주 비슷한데, 딱 한가지 다른점 : ReactJS에는 'jsx'가 있음
+-jsx는 기본적으로 어떤것의 이름 속성을 <Movie props="value" /> 이렇게 따옴표와 텍스트로 쓰는 것(property name = "value")
+-prop은 function이 가지는 argument  (-- function funcName({prop1,prop2}) --)
+
+
+✅모든 src>file.js 맨 위에 import React from 'react'; 가 있어야 react가 component를 이해할 수 있음.
+
+
+✅Javascript array의 ".map" 기능
+: map은 function을 취해서 그 function을 arry의 각 item에 적용하여 return함
+(예시)
+const friends = ["dal","mark","lynn","nico"]
+
+friends.map(current => { //current => 는 function(current)와 똑 같 음
+    console.log(current);
+    return 0
+})
+//-->결과:
+dal
+mark
+lynn
+nico
+[0, 0, 0, 0]
+
+
+friends.map(function(friend) {  //function의 괄호안에는 아무거나 넣어도 array의 각 item을 나타냄
+    return friend + "😍";
+})
+//-->결과:
+["dal😍", "mark😍", "lynn😍", "nico😍"]
+
+
+✅(function이 아닌) class components
+
+class App extends React.Component{
+    // "App class" has extended from "React"component
+    //ex) 'Samsung class' or 'iPhone class' has extended from 'Phone class' (Phone class has camera, screen, charger...)
+    --class react componenet는 바로 return을 가지지 않음!
+    --그대신 "render method"를 사용(React.Component가 가지는 기능)
+  }
+  --⭐ React는 자동으로 모든 class component의 Render method를 실행한다.⭐
+
+✅"STATE"
+state 는 object이고,
+    component의 data를 넣을 공간이 있고,
+            이 data는 변화한다.
+    --> state는 직접 값을 변화시키기않고, setState를 이용한다
+
+✅setState
+매 순간 setState를 호출할 때 마다, react는 state를 업데이트하고 render function을 호출(새로고침)한다!
+(html에서 변하는 값 확인 가능)
+
+✅this.state == current!
+current는 함수로 호출한다. like this!
+    this.setState = (current => ({ count: current.count - 1}));
